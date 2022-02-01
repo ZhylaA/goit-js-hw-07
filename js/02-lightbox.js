@@ -36,10 +36,12 @@ function createListItemMarkup(items) {
     <img class="gallery__image" src="${item.preview}" 
     alt="${item.description}" /></a>`).join('');
 };
+
 var lightbox = new SimpleLightbox('.gallery a', {
     captionsData:'alt',
     // captionPosition:'bottom',
-    captionDelay:250,
+    captionDelay: 250,
+
 });
 console.log(lightbox)
 

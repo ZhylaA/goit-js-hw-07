@@ -36,13 +36,19 @@ function onClick(event) {
     event.preventDefault();
     // 2. Реализация делегирования на div.gallery и получение url большого изображения.
     const imageGalary = event.target.classList.contains('gallery__image');
+    if (!imageGalary) { return; };
     const instance = basicLightbox.create(`<img  width="800" height="600" src="${event.target.dataset.source}">`);
     instance.show();
     // // 9. Закрытие с клавиатуры
 // // ⚠️ Следующий функционал не обязателен при сдаче задания, но будет хорошей дополнительной практикой.
 // // Добавь закрытие модального окна по нажатию клавиши Escape.Сделай так, чтобы прослушивание клавиатуры было только пока открыто модальное окно.
 // //  У библиотеки basicLightbox есть метод для программного закрытия модального окна.
-    if (imageGalary == true) { document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { instance.close(); } }); } return;
+    // if (imageGalary == true) { document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { instance.close(); } }); } return;
+    // };
+    if (imageGalary == true) {
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape')
+            { onClose: (instance) => { document.removeEventListener }; }
+        });
+    } return;
     };
-
-
